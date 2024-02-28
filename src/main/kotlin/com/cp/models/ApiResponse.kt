@@ -1,4 +1,4 @@
-package com.cp.model
+package com.cp.models
 
 import kotlinx.serialization.Serializable
 
