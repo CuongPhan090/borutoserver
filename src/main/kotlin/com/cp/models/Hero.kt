@@ -10,8 +10,8 @@ data class Hero(
     val about: String,
     val rating: Double,
     val power: Int,
-    val birthMonth: String,
-    val birthDay: String,
+    val month: String,
+    val day: String,
     val family: List<String>,
     val abilities: List<String>,
     val natureTypes: List<String>
