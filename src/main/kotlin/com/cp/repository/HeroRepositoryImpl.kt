@@ -2,6 +2,7 @@ package com.cp.repository
 
 import com.cp.models.ApiResponse
 import com.cp.models.Hero
+import org.jetbrains.annotations.VisibleForTesting
 
 class HeroRepositoryImpl : HeroRepository {
 
@@ -400,7 +401,7 @@ class HeroRepositoryImpl : HeroRepository {
         return ApiResponse(
             success = true,
             message = "ok",
-            prevPage = getPreviousPage(pageNumber),
+            prevPage = getPrevPage(pageNumber),
             nextPage = getNextPage(pageNumber),
             heroes = heroes[pageNumber] ?: run {
                 //TODO: Add log error message here
@@ -409,16 +410,24 @@ class HeroRepositoryImpl : HeroRepository {
         )
     }
 
-    private fun getNextPage(pageNumber: Int) = if (pageNumber in 1..4) pageNumber + 1 else null
-    private fun getPreviousPage(pageNumber: Int) = if (pageNumber in 2..5) pageNumber - 1 else null
+    @VisibleForTesting
+    fun getNextPage(pageNumber: Int) = if (pageNumber in 1..4) pageNumber + 1 else null
+
+    @VisibleForTesting
+    fun getPrevPage(pageNumber: Int) = if (pageNumber in 2..5) pageNumber - 1 else null
 
     override fun searchHeroes(heroNames: String?): ApiResponse {
         return ApiResponse(
             success = true,
             message = "ok",
-            heroes = if (!heroNames.isNullOrEmpty()) {
-                heroes.values.flatten().filter { it.name.contains(heroNames, ignoreCase = true) }
-            } else emptyList()
+            heroes = findHeroes(heroNames)
         )
+    }
+
+    @VisibleForTesting
+    fun findHeroes(name: String?): List<Hero> {
+        return if (!name.isNullOrEmpty()) {
+            heroes.values.flatten().filter { it.name.contains(name, ignoreCase = true) }
+        } else emptyList()
     }
 }
