@@ -412,7 +412,13 @@ class HeroRepositoryImpl : HeroRepository {
     private fun getNextPage(pageNumber: Int) = if (pageNumber in 1..4) pageNumber + 1 else null
     private fun getPreviousPage(pageNumber: Int) = if (pageNumber in 2..5) pageNumber - 1 else null
 
-    override fun searchHeroes(name: String): ApiResponse {
-        TODO("Not yet implemented")
+    override fun searchHeroes(heroNames: String?): ApiResponse {
+        return ApiResponse(
+            success = true,
+            message = "ok",
+            heroes = if (!heroNames.isNullOrEmpty()) {
+                heroes.values.flatten().filter { it.name.contains(heroNames, ignoreCase = true) }
+            } else emptyList()
+        )
     }
 }
