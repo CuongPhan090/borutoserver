@@ -39,6 +39,9 @@ dependencies {
     // SLF4J Logger
     implementation("io.insert-koin:koin-logger-slf4j:$koinVersion")
 
+    // Status Pages
+    implementation("io.ktor:ktor-server-status-pages:$ktorVersion")
+
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
 }
