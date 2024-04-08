@@ -406,7 +406,8 @@ class HeroRepositoryImpl : HeroRepository {
             heroes = heroes[pageNumber] ?: run {
                 //TODO: Add log error message here
                 emptyList()
-            }
+            },
+            lastUpdated = System.currentTimeMillis()
         )
     }
 

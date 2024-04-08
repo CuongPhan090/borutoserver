@@ -25,16 +25,16 @@ class GetAllHeroesTest {
     fun `query all pages at getAllHeroes endpoint, assert correct response`() = testApplication {
         (1..5).forEach { pageNumber ->
             client.get(urlString = "/boruto/heroes?page=$pageNumber").apply {
+                val actualApiResponse = Json.decodeFromString<ApiResponse>(bodyAsText())
                 val expectedApiResponse = ApiResponse(
                     success = true,
                     message = "ok",
                     prevPage = heroRepository.getPrevPage(pageNumber),
                     nextPage = heroRepository.getNextPage(pageNumber),
-                    heroes = getHeroesOn(pageNumber = pageNumber)
+                    heroes = getHeroesOn(pageNumber = pageNumber),
+                    lastUpdated = actualApiResponse.lastUpdated
                 )
-
-                val actualApiResponse = Json.decodeFromString<ApiResponse>(bodyAsText())
-
+                
                 assertEquals(HttpStatusCode.OK, status)
 
                 assertEquals(
