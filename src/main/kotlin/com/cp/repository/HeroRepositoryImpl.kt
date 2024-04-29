@@ -187,7 +187,7 @@ class HeroRepositoryImpl : HeroRepository {
         Hero(
             id = 7,
             name = "Kawaki",
-            image = "/images/kawaki.jpg",
+            image = "/images/kawaki.png",
             about = "Kawaki (カワキ, Kawaki) is a child raised by Kara to be the future vessel for Isshiki Ōtsutsuki and the key to the fulfilment of their greatest wish.[1] After being brought to Konohagakure by Team 7, he is taken in by Naruto Uzumaki who raises him as his own, during which he develops a brotherly bond with Boruto Uzumaki to solve the mystery of the Kāma.",
             rating = 4.2,
             power = 92,
@@ -208,7 +208,7 @@ class HeroRepositoryImpl : HeroRepository {
         Hero(
             id = 8,
             name = "Orochimaru",
-            image = "/images/orochimaru.jpg",
+            image = "/images/orochimaru.jpeg",
             about = "Orochimaru (大蛇丸, Orochimaru) is one of Konohagakure's legendary Sannin. With a life-ambition to learn all of the world's secrets, Orochimaru seeks immortality so that he might live all of the lives necessary to accomplish his task. After being caught red-handed performing unethical experiments on his fellow citizens for the sake of this immortality, Orochimaru defected from Konoha.",
             rating = 4.5,
             power = 97,
